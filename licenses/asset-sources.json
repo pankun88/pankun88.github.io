@@ -1,0 +1,64 @@
+{
+  "characterAssets": {
+    "source": "Self-authored procedural geometry, rigs and animation in tools/author-dragons.py for user-requested Toothless reference fan art; not an original character-design claim",
+    "sourceRevision": "6db09729130bc1002c34aeb9ee7ebb43a3f19e14",
+    "externalMeshes": [],
+    "externalTextures": [],
+    "paidAssets": false,
+    "downloadedCharacterAssets": false,
+    "revision": "Approved night-baby belly/leg revision: raised belly line, separated front/hind knees and slimmer knee radius. Neutral-slit mouth, rounded tongue and all animation clips retained. Night adult and both sunshine models unchanged.",
+    "referenceUse": "Character appearance follows Toothless/Night Fury from How to Train Your Dragon, including stylized user-supplied renditions. Reference image files are not bundled; no third-party meshes or textures were downloaded.",
+    "characterRights": "Referenced character/IP belongs to its rights holders. Self-authoring this geometry and using free tools does not grant a commercial character licence.",
+    "sourceSha256": "9b1d5cfb3a1dda4a1e1c7a121145aa24d3386237a78401301bd8dfa075627031",
+    "validationSourceSha256": "5605367cda406e6dbc7ccfd9de91142a14c19b52153a4d010840e465d3418fb7",
+    "files": {
+      "dragon-baby.glb": "55bf0df3791cb552b60ac8f75f0d53b5ba2166e69103c58a6afd4e66988e877c",
+      "dragon-final.glb": "100e88d8f0c6d52e143c362cd58fac7280ec1d521025e6d8b4d2e2563962eeb6",
+      "dragon-baby.blend": "16e8864c8d4d42979ad9925398810127b956011e2b2b8ee6ebffd63ee78629aa",
+      "dragon-final.blend": "da31a7a7ceb1e12c7ab04ae9134af8d5facdc5eac7cdae705cf3dec191b57db1"
+    }
+  },
+  "sunshineAssets": {
+    "source": "Self-authored sunshine-dragon geometry, rigs and baked animations in tools/author-dragons.py -- --style sun",
+    "revision": "Balance-first Hallabong refinement on baby/teen only: retained the approved round face and low integrated peak proportions; broadened the shallow central recess within that peak, with restrained local cavity shading. Both small leaves keep their shape and attach naturally inside the recess. All skin positions and colors outside the cavity, non-crown meshes, body topology, skin weights and animation channels are preserved. No tall rim or additional cap mesh. Final sun and all night source/model files remain byte-identical.",
+    "designDirection": "Compact plush baby and teen with dominant round faces and low integrated citrus peaks; broad-shouldered adult; warm orange bodies with rounded cream belly markings that elongate with growth, orange membranes, swept adult mohawk and solid non-emissive seed tail.",
+    "referenceUse": "Abstract generic Hallabong traits (a rounded peak, shallow central recess and small leaves) from user-supplied reference photos and illustrations; no copied image files, meshes, textures, logos or complete character design.",
+    "rightsStatement": "An independent design attempt, not a legal-clearance guarantee. Free tools and self-authored geometry alone do not determine third-party character rights.",
+    "externalMeshes": [],
+    "externalTextures": [],
+    "paidAssets": false,
+    "downloadedCharacterAssets": false,
+    "sourceSha256": "9b1d5cfb3a1dda4a1e1c7a121145aa24d3386237a78401301bd8dfa075627031",
+    "validationSourceSha256": "5605367cda406e6dbc7ccfd9de91142a14c19b52153a4d010840e465d3418fb7",
+    "files": {
+      "sun-baby.glb": "f3971324c42fa620ece1b2a3d0eb1a3f0d82dad7baeba0f29024401f62fb60a3",
+      "sun-final.glb": "b611690012e94692c5c5dd9946fdf49b9b3b574afb22a2991c5f4b16415e1199",
+      "sun-baby.blend": "68f17a369f3a1a14d2866c97d749455e1dc2ce11680fd60c1411fa0493fd2c0d",
+      "sun-final.blend": "ffcc686db99cce4265aad2daa0f46c347451629b568576fb28506cf5574fb600"
+    }
+  },
+  "adolescentAssets": {
+    "source": "Self-authored regional proportions in tools/author-teen.py using tools/author-dragons.py; neither teen is a uniformly scaled baby.",
+    "manifest": "../models/teen-authoring.json",
+    "validation": "tools/check-dragon-geometry.py --stage teen checks actual exported geometry, mouth and sampled motion. Same character rights as the corresponding family above.",
+    "design": "Longer limbs and torso, smaller relative head, medium folded wings; adult-only wing display remains reserved for 100 stickers."
+  },
+  "authoringTool": {
+    "name": "Blender",
+    "version": "4.5.14 LTS",
+    "download": "https://download.blender.org/release/Blender4.5/blender-4.5.14-macos-arm64.dmg",
+    "sha256": "65134d9b07b20e2fa8d3c9e44f6f44ffb5c9774dd521b95f50387310241ca170",
+    "license": "GNU GPL-3.0-or-later for the Blender binary; tool is not bundled in the web application",
+    "licenseSource": "https://www.blender.org/about/license/",
+    "artworkTerms": "The Blender application GPL does not restrict exported artwork/data. This does not license pre-existing referenced character designs or override their separate rights.",
+    "scriptDistribution": "The Blender license page separately requires published bpy scripts to use a GPL-compatible license. This source is supplied for review/reproduction, not represented as a proprietary Blender component."
+  },
+  "webRuntime": {
+    "name": "three.js",
+    "version": "0.186.1",
+    "license": "MIT",
+    "notice": "THREE.txt"
+  },
+  "fonts": "System fonts only; no downloaded or runtime-requested web fonts.",
+  "dependencyVersions": "Exact installed tool dependencies are recorded in package-lock.json; install with npm ci."
+}

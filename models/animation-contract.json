@@ -1,0 +1,187 @@
+{
+  "schemaVersion": 1,
+  "status": "G003-base-approved-mouth-and-shoulder-corrections-awaiting-review",
+  "characterReference": "Toothless / Night Fury; user-requested fan art",
+  "units": "metres",
+  "up": "+Y",
+  "forward": "+Z",
+  "groundY": 0,
+  "motionOwner": "src/locomotion.ts; GLB Root has no accumulated translation or yaw",
+  "feedingReview": "Two eating and four joy performances retained; arm/neck source geometry and anatomical weights corrected at user request. Mouth baseline independently regenerated before carving on the corrected body; artistic review pending.",
+  "feedingSelection": "Eight combinations per resident; no repeat of the last two base joys; every fifth eaten fruit adds a second joy without extra count; page-memory only",
+  "mouth": {
+    "geometry": "Real concave cavity in the skin, warm dark interior and inset skinned tongue; no overlay mouth plane",
+    "construction": "Neutral slit and sealed pocket; no exterior compression or lip bevel. Original exterior normals retained, rim weights blended continuously, and tongue keeps rounded volume.",
+    "regression": "Original-surface shading and triangle orientation checked inside the patch, including sampled eating/joy poses; visual multi-angle inspection is still required.",
+    "rig": "Existing Jaw; upper smile pinned to Head; MouthSocket follows aperture midpoint",
+    "states": {
+      "rest": "Closed original fine smile",
+      "chewing": "Smaller rhythmic opening",
+      "receivingAndCheering": "Wider C opening; JoyCheer uses full range"
+    },
+    "authoredMaximumGap": {
+      "baby": 0.062,
+      "final": 0.092
+    },
+    "neutralGap": 0.001,
+    "preservationBaseline": "tests/fixtures/mouth-baseline.json",
+    "sourceUpdate": "tools/author-dragons.py -- --style night --mouth"
+  },
+  "clips": {
+    "FeedChew": {
+      "duration": 3.6,
+      "biteTime": 0.9,
+      "mouthAnchor": "MouthSocket",
+      "grounded": true
+    },
+    "FeedSavor": {
+      "duration": 3.6,
+      "biteTime": 0.9,
+      "mouthAnchor": "MouthSocket",
+      "grounded": true
+    },
+    "JoyBounce": {
+      "duration": 2.4,
+      "grounded": true
+    },
+    "JoyWag": {
+      "duration": 2.4,
+      "grounded": true
+    },
+    "JoyNod": {
+      "duration": 2.4,
+      "grounded": true
+    },
+    "JoyCheer": {
+      "duration": 2.4,
+      "grounded": true
+    },
+    "IdleBreath": {
+      "duration": 4,
+      "loop": true
+    },
+    "Walk": {
+      "duration": 1.6,
+      "loop": true
+    },
+    "StartWalk": {
+      "duration": 0.8,
+      "speedCurve": "speed * smoothstep(t / 0.8)",
+      "endWalkPhase": 0
+    },
+    "StopWalk": {
+      "duration": 0.8,
+      "speedCurve": "speed * (1 - smoothstep(t / 0.8))",
+      "startWalkPhase": 0
+    },
+    "TurnLeft": {
+      "duration": 1.2,
+      "viewerYaw": "+pi/2 * smoothstep(t / 1.2)"
+    },
+    "TurnRight": {
+      "duration": 1.2,
+      "viewerYaw": "-pi/2 * smoothstep(t / 1.2)"
+    },
+    "WingOpen": {
+      "duration": 1.8,
+      "only": "final",
+      "end": "outstretched arched bat-wing display; hold endpoint",
+      "displayRollDegrees": -35,
+      "outerRaiseDegrees": 12
+    },
+    "WingClose": {
+      "duration": 1.8,
+      "only": "final",
+      "end": "folded"
+    }
+  },
+  "stages": {
+    "baby": {
+      "glb": "dragon-baby.glb",
+      "stride": 0.48,
+      "walkSpeed": 0.3,
+      "bindHeight": 1.11292,
+      "bindSpan": 1.31194,
+      "foldedHeight": 1.11292,
+      "foldedSpan": 1.31194,
+      "triangles": 89130,
+      "joints": 36
+    },
+    "final": {
+      "glb": "dragon-final.glb",
+      "stride": 1.04,
+      "walkSpeed": 0.65,
+      "bindPose": "open wings; first displayed pose is IdleBreath at 0 seconds",
+      "bindHeight": 2.01139,
+      "bindSpan": 6.49586,
+      "foldedHeight": 2.22467,
+      "foldedSpan": 3.13665,
+      "triangles": 110568,
+      "joints": 45
+    },
+    "teen": {
+      "glb": "dragon-teen.glb",
+      "stride": 0.68,
+      "walkSpeed": 0.425,
+      "bindHeight": 1.51791512966156,
+      "bindSpan": 2.0699455738067627,
+      "foldedHeight": 1.5179153790427193,
+      "foldedSpan": 2.069945812225342,
+      "triangles": 88182,
+      "joints": 36
+    }
+  },
+  "contacts": {
+    "exportedMarkers": [
+      "FrontContact.L",
+      "FrontContact.R",
+      "HindContact.L",
+      "HindContact.R"
+    ],
+    "runtimeMarkers": [
+      "FrontContactL",
+      "FrontContactR",
+      "HindContactL",
+      "HindContactR"
+    ],
+    "walkStancePhase": [
+      0,
+      0.6
+    ],
+    "phaseOffsets": {
+      "FrontContactL": 0,
+      "HindContactR": 0,
+      "FrontContactR": 0.5,
+      "HindContactL": 0.5
+    },
+    "mouthSocket": "MouthSocket",
+    "limitation": "Bone-marker checks do not certify every deformed skin vertex or visual quality. Inspect surface clearance and foot transitions separately."
+  },
+  "reviewCycle": {
+    "start": 0.8,
+    "walk": 1.6,
+    "stop": 0.8,
+    "turn": 2.4,
+    "pause": 0.8,
+    "returnTripSeconds": 12.8,
+    "continuousSequenceSeconds": 72,
+    "halfSpeedObservationInterval": [
+      51,
+      63.8
+    ]
+  },
+  "authoring": {
+    "tool": "Blender 4.5.14 LTS",
+    "fps": 30,
+    "source": "tools/author-dragons.py",
+    "sourceRevision": "6db09729130bc1002c34aeb9ee7ebb43a3f19e14",
+    "externalCharacterAssets": false,
+    "runtimeConstraints": false
+  },
+  "shoulderRepair": {
+    "construction": "Front limb roots reach back into the chest rather than up into the head. Sun arm joints lowered onto the torso sides; night adult lower head lobe clears the shoulder. Source-part surface regions blend limb-only and head-only weights continuously.",
+    "clearance": "At least 2.5 authoring voxels between front-limb and head source surfaces before voxel union.",
+    "regression": "Exported outer-sleeve samples limit head/neck influence; full geometry audits and close-up pose sheets are separate evidence.",
+    "review": "Human visual review pending; no new artistic approval implied."
+  }
+}

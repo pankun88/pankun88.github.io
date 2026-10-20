@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#cfe3b4" />
+    <title>아침걷기 학생 관리</title>
+    <script type="module" crossorigin src="/assets/kiosk-CsQS1rMV.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/style-B0EQ9ZNn.js">
+    <link rel="modulepreload" crossorigin href="/assets/growth-DF9vfQNn.js">
+    <link rel="modulepreload" crossorigin href="/assets/classSettings-Chp1t6hk.js">
+    <link rel="stylesheet" crossorigin href="/assets/style-PFVffYE_.css">
+    <link rel="stylesheet" crossorigin href="/assets/kiosk-DwFq8Erb.css">
+  </head>
+  <body>
+    <main id="kiosk">
+      <header class="kiosk-top">
+        <h1>아침걷기 학생 관리</h1>
+        <p id="kiosk-date"></p>
+      </header>
+      <nav class="kiosk-links" aria-label="아침숲 화면">
+        <a id="village-link" href="/village.html">세잎클로버 마을</a>
+      </nav>
+
+      <section id="teacher-landing" aria-label="선생님 관리 시작">
+        <button id="teacher-open" type="button">선생님 설정</button>
+      </section>
+
+      <div id="pin" class="kiosk-dialog" hidden>
+        <form
+          id="pin-form"
+          class="dialog-card"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="pin-title"
+        >
+          <h2 id="pin-title">선생님 비밀번호</h2>
+          <p id="pin-guide"></p>
+          <input
+            id="pin-input"
+            type="password"
+            inputmode="numeric"
+            autocomplete="off"
+            maxlength="8"
+            aria-labelledby="pin-title"
+          />
+          <input
+            id="pin-again"
+            type="password"
+            inputmode="numeric"
+            autocomplete="off"
+            maxlength="8"
+            aria-label="비밀번호 한 번 더"
+            placeholder="한 번 더 입력"
+            hidden
+          />
+          <p id="pin-error" role="alert"></p>
+          <button id="recovery-open" type="button" class="quiet">
+            비밀번호를 잊었어요
+          </button>
+          <div class="dialog-actions">
+            <button id="pin-cancel" type="button" class="quiet">취소</button>
+            <button type="submit">확인</button>
+          </div>
+        </form>
+      </div>
+
+      <div id="recovery" class="kiosk-dialog" hidden>
+        <form
+          id="recovery-form"
+          class="dialog-card"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="recovery-title"
+        >
+          <h2 id="recovery-title">선생님 비밀번호 복구</h2>
+          <p>저장한 복구 코드가 필요해요. 학생 기록은 지워지지 않아요.</p>
+          <p class="kiosk-help">
+            코드가 없으면 우회할 수 없어요. 현재 브라우저 기록은 지우지 말고,
+            따로 보관한 백업을 다른 브라우저에서 가져오세요.
+          </p>
+          <input
+            id="recover-code"
+            autocomplete="off"
+            aria-label="저장한 복구 코드"
+            placeholder="저장한 복구 코드"
+          />
+          <input
+            id="recover-pin"
+            type="password"
+            inputmode="numeric"
+            maxlength="8"
+            autocomplete="off"
+            aria-label="복구할 새 비밀번호"
+            placeholder="새 비밀번호"
+          />
+          <input
+            id="recover-again"
+            type="password"
+            inputmode="numeric"
+            maxlength="8"
+            autocomplete="off"
+            aria-label="복구할 새 비밀번호 한 번 더"
+            placeholder="새 비밀번호 한 번 더"
+          />
+          <p id="recovery-error" role="alert"></p>
+          <div class="dialog-actions">
+            <button id="recovery-cancel" type="button" class="quiet">
+              취소
+            </button>
+            <button type="submit">비밀번호 복구</button>
+          </div>
+        </form>
+      </div>
+
+      <section id="teacher-view" hidden aria-label="선생님 화면">
+        <div class="teacher-head">
+          <div class="teacher-tabs" role="tablist" aria-label="관리 메뉴">
+            <button
+              id="tab-today"
+              type="button"
+              role="tab"
+              aria-controls="panel-today"
+              aria-selected="true"
+            >
+              오늘
+            </button>
+            <button
+              id="tab-students"
+              type="button"
+              role="tab"
+              aria-controls="panel-students"
+              aria-selected="false"
+            >
+              학생
+            </button>
+            <button
+              id="tab-settings"
+              type="button"
+              role="tab"
+              aria-controls="panel-settings"
+              aria-selected="false"
+            >
+              설정
+            </button>
+          </div>
+          <button id="teacher-close" type="button">잠그고 나가기</button>
+        </div>
+        <p id="backup-reminder" hidden>
+          <span id="backup-reminder-text"></span>
+          <button id="backup-now" type="button" class="quiet">지금 백업</button>
+        </p>
+        <p class="teacher-status">
+          <span id="teacher-error" role="alert"></span>
+          <span id="teacher-done" role="status"></span>
+          <button id="undo" type="button" class="quiet" hidden>되돌리기</button>
+        </p>
+
+        <section
+          id="panel-today"
+          class="teacher-panel"
+          role="tabpanel"
+          aria-labelledby="tab-today"
+        >
+          <div class="today-head">
+            <label class="today-date"
+              >날짜 <input id="today-date" type="date"
+            /></label>
+            <p id="today-summary"></p>
+          </div>
+          <p id="today-note" class="kiosk-help"></p>
+          <table id="today-table">
+            <thead>
+              <tr>
+                <th>번호</th>
+                <th>이름</th>
+                <th>열매</th>
+                <th><span class="sr-only">대신 주기</span></th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </section>
+
+        <section
+          id="panel-students"
+          class="teacher-panel"
+          role="tabpanel"
+          aria-labelledby="tab-students"
+          hidden
+        >
+          <form id="roster-form">
+            <label for="roster-input" class="field-title">명단 추가</label>
+            <p class="kiosk-help">
+              한 줄에 <strong>번호 이름 누적 열매</strong>를 적어요. 열매는
+              생략해도 돼요. 이름 아래에서 친구를 바꿀 수 있어요.
+            </p>
+            <textarea
+              id="roster-input"
+              rows="5"
+              spellcheck="false"
+              placeholder="1 김하늘&#10;2 이바다 12"
+            ></textarea>
+            <button type="submit">명단 추가</button>
+          </form>
+          <table id="teacher-table">
+            <thead>
+              <tr>
+                <th>번호</th>
+                <th>이름</th>
+                <th>누적 열매</th>
+                <th>단계</th>
+                <th>내 용</th>
+                <th><span class="sr-only">보관</span></th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+          <details id="archived-students" hidden>
+            <summary id="archived-summary"></summary>
+            <ul id="archived-list"></ul>
+          </details>
+        </section>
+
+        <section
+          id="panel-settings"
+          class="teacher-panel"
+          role="tabpanel"
+          aria-labelledby="tab-settings"
+          hidden
+        >
+          <section aria-labelledby="goal-title">
+            <h3 id="goal-title">최종 진화</h3>
+            <form id="goal-form" class="teacher-row">
+              <label class="goal-label"
+                >최종 진화까지 열매
+                <input
+                  id="goal-input"
+                  type="number"
+                  min="10"
+                  max="300"
+                  step="1"
+                  inputmode="numeric"
+                />개</label
+              >
+              <button id="goal-save" type="submit">저장</button>
+            </form>
+            <p id="goal-preview" class="kiosk-help"></p>
+            <p class="kiosk-help">
+              이미 자란 용이 작아지는 변경은 저장되지 않아요.
+            </p>
+          </section>
+          <section aria-labelledby="backup-title">
+            <h3 id="backup-title">기록 백업과 복원</h3>
+            <p class="kiosk-help">
+              기록은 이 태블릿 브라우저에만 있어요. 백업 파일은 태블릿 밖에
+              보관해 주세요. <span id="backup-last"></span>
+            </p>
+            <button id="backup-save" type="button">기록 백업 저장</button>
+            <button id="backup-damaged" type="button" class="quiet" hidden>
+              손상된 원본 따로 저장
+            </button>
+            <label class="backup-label"
+              >백업 파일 선택
+              <input
+                id="backup-file"
+                type="file"
+                accept=".json,application/json"
+            /></label>
+            <p id="backup-preview" role="status"></p>
+            <button id="backup-restore" type="button" disabled>
+              선택한 백업으로 복원
+            </button>
+          </section>
+          <section aria-labelledby="pin-change-title">
+            <h3 id="pin-change-title">선생님 비밀번호</h3>
+            <form id="change-pin" class="teacher-row">
+              <input
+                id="new-pin"
+                type="password"
+                inputmode="numeric"
+                autocomplete="off"
+                maxlength="8"
+                placeholder="새 비밀번호"
+                aria-label="새 비밀번호"
+              />
+              <input
+                id="new-pin-again"
+                type="password"
+                inputmode="numeric"
+                autocomplete="off"
+                maxlength="8"
+                placeholder="한 번 더 입력"
+                aria-label="새 비밀번호 한 번 더"
+              />
+              <button type="submit">비밀번호 바꾸기</button>
+            </form>
+            <p class="kiosk-help">
+              새 복구 코드를 만들면 이전 코드는 쓸 수 없어요. 2분 동안 조작이
+              없으면 이 화면은 잠겨요.
+            </p>
+            <button id="recovery-create" type="button" class="quiet">
+              새 복구 코드 만들기
+            </button>
+            <output id="recovery-code"></output>
+            <button id="recovery-save" type="button" hidden>
+              복구 코드 파일 저장
+            </button>
+          </section>
+        </section>
+      </section>
+
+      <div id="kiosk-error" role="alert" hidden>
+        <strong>학생 기록을 열 수 없어요.</strong>
+        <p id="kiosk-error-detail"></p>
+        <p>
+          기록은 지우지 않았어요. 선생님 화면에서 손상된 원본을 저장한 뒤
+          백업으로 복원하세요.
+        </p>
+      </div>
+    </main>
+  </body>
+</html>

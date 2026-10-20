@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#e7eddf" />
+    <title>아침숲 · 투슬리스 참고 시안</title>
+    <script type="module" crossorigin src="/assets/review-qgL7iVNW.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/style-B0EQ9ZNn.js">
+    <link rel="modulepreload" crossorigin href="/assets/locomotion-C6yITJmv.js">
+    <link rel="modulepreload" crossorigin href="/assets/fireBreathEffect-C3SWEgxX.js">
+    <link rel="stylesheet" crossorigin href="/assets/style-PFVffYE_.css">
+  </head>
+  <body>
+    <main id="review" aria-label="아기 용과 최종 용 3D 디자인 비교">
+      <canvas
+        id="scene"
+        aria-label="실제 3D 용의 움직임을 보여주는 장면"
+      ></canvas>
+      <header class="topbar">
+        <div>
+          <span id="design-title" class="eyebrow"
+            >아침숲 · 투슬리스 참고 시안</span
+          >
+          <h1>작은 용, 큰 날개.</h1>
+          <p>같은 친구의 두 가지 모습</p>
+          <nav class="style-switcher" aria-label="용 디자인 선택">
+            <a href="/?style=night" data-style="night">네잎이</a>
+            <a href="/?style=sun" data-style="sun">두잎이</a>
+          </nav>
+          <nav class="style-switcher" aria-label="성장 단계 비교">
+            <a href="/?stage=baby" data-stage="baby">아기 비교</a>
+            <a href="/?stage=teen" data-stage="teen">청소년 비교</a>
+            <a id="kiosk-link" href="/kiosk.html">선생님 관리</a>
+            <a id="village-link" href="/village.html">세잎클로버 마을</a>
+          </nav>
+        </div>
+        <button id="fullscreen" class="quiet" aria-label="전체 화면으로 보기">
+          크게 보기 <span aria-hidden="true">↗</span>
+        </button>
+      </header>
+      <nav class="view-controls" aria-label="캐릭터를 보는 방향">
+        <button data-angle="threeQuarter" aria-pressed="true">비스듬히</button>
+        <button data-angle="front" aria-pressed="false">앞모습</button>
+        <button data-angle="side" aria-pressed="false">옆모습</button>
+        <button data-angle="back" aria-pressed="false">뒷모습</button>
+      </nav>
+      <div id="baby-label" class="character-label">
+        <span>자라는 친구</span><strong id="baby-name">아기 용</strong>
+      </div>
+      <div id="final-label" class="character-label">
+        <span>자라난 모습</span><strong id="final-name">성체 용</strong>
+      </div>
+      <div id="loading" role="status">
+        <span class="loading-dot"></span>두 친구를 불러오는 중…
+      </div>
+      <div id="error" role="alert" hidden>
+        <strong>캐릭터를 불러오지 못했어요.</strong>
+        <p id="error-detail"></p>
+        <button id="retry">다시 불러오기</button>
+      </div>
+      <footer class="bottom-ui">
+        <div id="motion-caption" aria-live="polite">
+          바닥을 딛고 천천히 숨을 쉬어요.
+        </div>
+        <nav class="actions" aria-label="캐릭터 동작">
+          <button id="idle" aria-pressed="true">쉬기</button>
+          <button id="walk" aria-pressed="false">산책 보기</button>
+          <button id="wings" aria-pressed="false">날개 펼치기</button>
+          <button id="fire" aria-pressed="false">불 뿜기</button>
+          <button id="sequence" aria-pressed="false">동작 이어 보기</button>
+        </nav>
+        <div class="review-meta">
+          <span id="design-notice">투슬리스 참고 팬아트 · 디자인 검토용</span
+          ><button id="slow" class="text-button" aria-pressed="false">
+            느리게 보기
+          </button>
+        </div>
+      </footer>
+    </main>
+  </body>
+</html>

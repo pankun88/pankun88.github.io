@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#cfe3b4" />
+    <title>세잎클로버 마을</title>
+    <script type="module" crossorigin src="/assets/village-Din6GouZ.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/style-B0EQ9ZNn.js">
+    <link rel="modulepreload" crossorigin href="/assets/locomotion-C6yITJmv.js">
+    <link rel="modulepreload" crossorigin href="/assets/fireBreathEffect-C3SWEgxX.js">
+    <link rel="modulepreload" crossorigin href="/assets/growth-DF9vfQNn.js">
+    <link rel="modulepreload" crossorigin href="/assets/egg-BSBj3CR8.js">
+    <link rel="modulepreload" crossorigin href="/assets/classSettings-Chp1t6hk.js">
+    <link rel="stylesheet" crossorigin href="/assets/style-PFVffYE_.css">
+    <link rel="stylesheet" crossorigin href="/assets/village-0jV5OzSm.css">
+  </head>
+  <body>
+    <main id="village" aria-label="우리 반 학생들의 알과 용이 자라는 3D 마을">
+      <canvas id="scene" aria-label="용들이 걷고 쉬는 3D 마을"></canvas>
+      <div id="labels" aria-label="주민 이름"></div>
+      <header class="village-top">
+        <div class="village-bar">
+          <div class="village-chip">
+            <span class="sun-dot" aria-hidden="true"></span>
+            <strong>세잎클로버 마을</strong>
+          </div>
+          <nav class="style-switcher" aria-label="마을 메뉴">
+            <a href="/village.html?style=night" data-style="night" hidden
+              >네잎이</a
+            >
+            <a href="/village.html?style=sun" data-style="sun" hidden>두잎이</a>
+            <a id="kiosk-link" href="/kiosk.html">선생님</a>
+          </nav>
+        </div>
+        <nav
+          id="demo-controls"
+          class="growth-switcher style-switcher"
+          aria-label="예시 마을의 자란 친구 수"
+          hidden
+        >
+          <a href="/village.html?grown=0" data-grown="0">모두 아기</a>
+          <a href="/village.html?grown=8" data-grown="8">아기 14 · 성체 8</a>
+          <a href="/village.html?grown=22" data-grown="22">모두 성체</a>
+        </nav>
+        <aside id="preview-banner" hidden role="note">
+          <p>
+            <strong>체험 · 무제한 열매 · 저장 안 됨</strong>
+            <span>새로고침하면 처음부터</span>
+          </p>
+          <a id="preview-exit" href="/village.html">실제 마을로</a>
+        </aside>
+        <div class="class-info">
+          <p id="class-summary"></p>
+          <p id="class-message" role="status"></p>
+          <div id="initial-growth-controls" hidden>
+            <button id="initial-growth-start" type="button" disabled>
+              첫 성장 보기
+            </button>
+          </div>
+          <p id="demo-note" hidden>체험 · 무제한 열매 · 저장 안 됨</p>
+          <p id="fruit-rule">걷고 와서 열매 주기 · 평일 7시~자정, 하루 1개</p>
+          <nav id="paging" hidden aria-label="학생 페이지">
+            <a id="page-prev" href="#">이전 친구들</a>
+            <span id="page-status"></span>
+            <a id="page-next" href="#">다음 친구들</a>
+          </nav>
+        </div>
+      </header>
+      <section id="empty-class" hidden>
+        <h1>아직 등록된 친구가 없어요</h1>
+        <a id="empty-kiosk-link" href="/kiosk.html">학생 등록하기</a>
+      </section>
+      <button id="back" type="button" hidden aria-label="마을로 돌아가기">
+        <span aria-hidden="true">‹</span> 마을로
+      </button>
+      <button
+        id="collection-toggle"
+        type="button"
+        hidden
+        aria-expanded="false"
+        aria-controls="collection-tray"
+      >
+        <span class="stamp-mark" aria-hidden="true"></span>
+        <span id="collection-count">도장</span>
+      </button>
+      <div id="collection-tray" hidden role="group" aria-label="도장과 꾸미기">
+        <div id="reward-collection" aria-label="모은 도장"></div>
+        <small id="decoration-label" hidden>꾸미기 고르기</small>
+        <div id="decoration-choices" role="group" aria-label="꾸미기"></div>
+        <p id="decoration-error" role="alert"></p>
+        <p id="current-decoration"></p>
+      </div>
+      <button id="preview-breath" type="button" hidden>불 뿜기 체험</button>
+      <button id="choose-character" type="button" hidden>친구 고르기</button>
+      <div id="fruit-control" hidden>
+        <button
+          id="feed-fruit"
+          type="button"
+          aria-label="햇살 열매: 끌어 놓거나 눌러서 주기"
+        >
+          <span class="sun-fruit" aria-hidden="true"></span>
+          <span id="fruit-allowance" aria-hidden="true">1</span>
+        </button>
+        <span id="fruit-caption">열매 주기</span>
+      </div>
+      <div id="resident-speech" class="speech-bubble" hidden>
+        <p id="feed-message" role="status"></p>
+        <p id="feed-error" role="alert" hidden></p>
+      </div>
+      <div id="feed-drag" class="sun-fruit" hidden aria-hidden="true"></div>
+      <div id="feed-mouth" hidden aria-hidden="true"></div>
+      <div id="hatch-announcement" class="speech-bubble" role="status" hidden>
+        <strong id="hatch-title"></strong>
+        <span id="hatch-caption"></span>
+      </div>
+      <button id="hatch-skip" type="button" hidden>건너뛰기</button>
+      <div
+        id="evolution-announcement"
+        class="speech-bubble"
+        role="status"
+        hidden
+      >
+        <strong id="evolution-title"></strong>
+        <span id="evolution-caption"></span>
+      </div>
+      <div id="evolution-reveal-title" aria-hidden="true" hidden>
+        <small id="evolution-reveal-name"></small>
+        <strong id="evolution-reveal-stage"></strong>
+      </div>
+      <button id="evolution-skip" type="button" hidden>건너뛰기</button>
+      <button id="initial-growth-skip" type="button" hidden>
+        전체 성장 건너뛰기
+      </button>
+      <div id="loading" role="status">
+        <span class="loading-dot"></span>마을 친구들을 불러오는 중…
+      </div>
+      <div id="error" role="alert" hidden>
+        <strong>마을을 불러오지 못했어요.</strong>
+        <p id="error-detail"></p>
+        <button id="retry">다시 불러오기</button>
+      </div>
+    </main>
+  </body>
+</html>

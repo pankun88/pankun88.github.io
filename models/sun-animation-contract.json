@@ -1,0 +1,169 @@
+{
+  "schemaVersion": 1,
+  "status": "human-unapproved-G007-sunshine-correction",
+  "characterDesign": "Self-authored sunshine-dragon design attempt; rounded baby face with balanced eyes, retained small crest and no nostrils; orange-unified adult with a swept forehead-to-nape mohawk; generic cute-to-mature growth contrast only",
+  "units": "metres",
+  "up": "+Y",
+  "forward": "+Z",
+  "groundY": 0,
+  "gait": "bipedal; hind legs support weight, forelimbs are raised FK arms",
+  "motionOwner": "src/locomotion.ts; GLB Root has no accumulated translation or yaw",
+  "feedingReview": "Two eating and four joy performances retained; arm/neck source geometry and anatomical weights corrected at user request. Mouth baseline independently regenerated before carving on the corrected body; artistic review pending.",
+  "feedingSelection": "Eight combinations per resident; no repeat of the last two base joys; every fifth eaten fruit adds a second joy without extra count; page-memory only",
+  "mouth": {
+    "geometry": "Real concave cavity in the skin, warm dark interior and inset skinned tongue; no overlay mouth plane",
+    "construction": "Neutral slit and sealed pocket; no exterior compression or lip bevel. Original exterior normals retained, rim weights blended continuously, and tongue keeps rounded volume.",
+    "regression": "Original-surface shading and triangle orientation checked inside the patch, including sampled eating/joy poses; visual multi-angle inspection is still required.",
+    "rig": "Existing Jaw; upper smile pinned to Head; MouthSocket follows aperture midpoint",
+    "states": {
+      "rest": "Closed original fine smile",
+      "chewing": "Smaller rhythmic opening",
+      "receivingAndCheering": "Wider C opening; JoyCheer uses full range"
+    },
+    "authoredMaximumGap": {
+      "baby": 0.062,
+      "final": 0.092
+    },
+    "neutralGap": 0.001,
+    "preservationBaseline": "tests/fixtures/mouth-baseline.json",
+    "sourceUpdate": "tools/author-dragons.py -- --style sun --mouth"
+  },
+  "clips": {
+    "FeedChew": {
+      "duration": 3.6,
+      "biteTime": 0.9,
+      "mouthAnchor": "MouthSocket",
+      "grounded": true
+    },
+    "FeedSavor": {
+      "duration": 3.6,
+      "biteTime": 0.9,
+      "mouthAnchor": "MouthSocket",
+      "grounded": true
+    },
+    "JoyBounce": {
+      "duration": 2.4,
+      "grounded": true
+    },
+    "JoyWag": {
+      "duration": 2.4,
+      "grounded": true
+    },
+    "JoyNod": {
+      "duration": 2.4,
+      "grounded": true
+    },
+    "JoyCheer": {
+      "duration": 2.4,
+      "grounded": true
+    },
+    "IdleBreath": {
+      "duration": 4,
+      "loop": true
+    },
+    "Walk": {
+      "duration": 1.6,
+      "loop": true
+    },
+    "StartWalk": {
+      "duration": 0.8,
+      "speedCurve": "speed * smoothstep(t / 0.8)",
+      "endWalkPhase": 0
+    },
+    "StopWalk": {
+      "duration": 0.8,
+      "speedCurve": "speed * (1 - smoothstep(t / 0.8))",
+      "startWalkPhase": 0
+    },
+    "TurnLeft": {
+      "duration": 1.2,
+      "viewerYaw": "+pi/2 * smoothstep(t / 1.2)"
+    },
+    "TurnRight": {
+      "duration": 1.2,
+      "viewerYaw": "-pi/2 * smoothstep(t / 1.2)"
+    },
+    "WingOpen": {
+      "duration": 1.8,
+      "only": "final",
+      "end": "open authored bind; clamp at endpoint",
+      "displayRollDegrees": 0
+    },
+    "WingClose": {
+      "duration": 1.8,
+      "only": "final",
+      "end": "shoulder rearward 65 degrees; elbow fan yaw 83 and roll -65 degrees"
+    }
+  },
+  "stages": {
+    "baby": {
+      "glb": "sun-baby.glb",
+      "stride": 0.48,
+      "walkSpeed": 0.3,
+      "bindHeight": 1.2266968488693237,
+      "bindSpan": 1.0608062744140625,
+      "foldedHeight": 1.2266968642805018,
+      "foldedSpan": 1.0608062744140625,
+      "triangles": 96930,
+      "joints": 31
+    },
+    "final": {
+      "glb": "sun-final.glb",
+      "stride": 1.04,
+      "walkSpeed": 0.65,
+      "bindPose": "open wings; first displayed pose is IdleBreath at 0 seconds",
+      "bindHeight": 2.15535,
+      "bindSpan": 6.05551,
+      "foldedHeight": 2.1553541197372255,
+      "foldedSpan": 1.7833306789398193,
+      "openSpan": 6.05551,
+      "triangles": 104895,
+      "joints": 40
+    },
+    "teen": {
+      "glb": "sun-teen.glb",
+      "stride": 0.68,
+      "walkSpeed": 0.425,
+      "bindHeight": 1.5726243257522583,
+      "bindSpan": 1.7455488443374634,
+      "foldedHeight": 1.572624563206844,
+      "foldedSpan": 1.745548963546753,
+      "triangles": 95809,
+      "joints": 31
+    }
+  },
+  "contacts": {
+    "exportedMarkers": ["HindContactL", "HindContactR"],
+    "walkStancePhase": [0, 0.6],
+    "phaseOffsets": {
+      "HindContactR": 0,
+      "HindContactL": 0.5
+    },
+    "mouthSocket": "MouthSocket",
+    "arms": "Forelimbs use raised counter-swinging FK, not ground IK",
+    "limitation": "Selected marker and finite surface samples do not certify every frame, blend or visual naturalness."
+  },
+  "reviewCycle": {
+    "start": 0.8,
+    "walk": 1.6,
+    "stop": 0.8,
+    "turn": 2.4,
+    "pause": 0.8,
+    "returnTripSeconds": 12.8,
+    "continuousSequenceSeconds": 72,
+    "halfSpeedObservationInterval": [51, 63.8]
+  },
+  "authoring": {
+    "tool": "Blender 4.5.14 LTS",
+    "fps": 30,
+    "source": "tools/author-dragons.py -- --style sun",
+    "externalCharacterAssets": false,
+    "runtimeConstraints": false
+  },
+  "shoulderRepair": {
+    "construction": "Front limb roots reach back into the chest rather than up into the head. Sun arm joints lowered onto the torso sides; night adult lower head lobe clears the shoulder. Source-part surface regions blend limb-only and head-only weights continuously.",
+    "clearance": "At least 2.5 authoring voxels between front-limb and head source surfaces before voxel union.",
+    "regression": "Exported outer-sleeve samples limit head/neck influence; full geometry audits and close-up pose sheets are separate evidence.",
+    "review": "Human visual review pending; no new artistic approval implied."
+  }
+}
