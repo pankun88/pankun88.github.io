@@ -7,12 +7,12 @@
     <link rel="manifest" href="/manifest.webmanifest" />
     <link rel="icon" href="/icon-192.png" />
     <title>아침걷기 학생 관리</title>
-    <script type="module" crossorigin src="/assets/kiosk-SN8pX531.js"></script>
+    <script type="module" crossorigin src="/assets/kiosk-vM4pKVGS.js"></script>
     <link rel="modulepreload" crossorigin href="/assets/style-B0EQ9ZNn.js">
     <link rel="modulepreload" crossorigin href="/assets/growth-DF9vfQNn.js">
-    <link rel="modulepreload" crossorigin href="/assets/fullscreen-CDMPxNqQ.js">
+    <link rel="modulepreload" crossorigin href="/assets/fullscreen-z-iVxRNC.js">
     <link rel="stylesheet" crossorigin href="/assets/style-PFVffYE_.css">
-    <link rel="stylesheet" crossorigin href="/assets/kiosk-CVqXoWpJ.css">
+    <link rel="stylesheet" crossorigin href="/assets/kiosk-B1FqvPnI.css">
   </head>
   <body>
     <main id="kiosk">
@@ -22,7 +22,9 @@
       </header>
       <nav class="kiosk-links" aria-label="아침숲 화면">
         <a id="village-link" href="/village.html">세잎클로버 마을</a>
-        <button id="fullscreen-toggle" class="kiosk-link" type="button" hidden>전체화면</button>
+        <button id="fullscreen-toggle" class="kiosk-link" type="button" hidden>
+          전체화면
+        </button>
       </nav>
 
       <section id="teacher-landing" aria-label="선생님 관리 시작">
@@ -252,6 +254,33 @@
             <p class="kiosk-help">
               이미 자란 용이 작아지는 변경은 저장되지 않아요.
             </p>
+          </section>
+          <section aria-labelledby="weekly-goal-title">
+            <h3 id="weekly-goal-title">우리 반 주간 선물</h3>
+            <form id="daily-goal-form" class="teacher-row">
+              <label class="goal-label"
+                >하루 기준 열매
+                <input
+                  id="daily-goal-input"
+                  type="number"
+                  min="1"
+                  max="999"
+                  step="1"
+                  inputmode="numeric"
+                />개
+              </label>
+              <button id="daily-goal-save" type="submit">하루 기준 저장</button>
+            </form>
+            <p class="kiosk-help">
+              하루 기준 × 이번 주 실제로 열매를 먹은 평일 수가 오늘까지
+              목표예요. 한 주에 선물 하나를 순서대로 받고, 이미 받은 선물은 계속
+              남아요.
+            </p>
+            <p id="weekly-settings-summary" class="kiosk-help"></p>
+            <p id="decor-history-empty" class="kiosk-help">
+              아직 받은 마을 선물이 없어요.
+            </p>
+            <ul id="decor-history" aria-label="마을 선물 해금 이력"></ul>
           </section>
           <section aria-labelledby="backup-title">
             <h3 id="backup-title">기록 백업과 복원</h3>

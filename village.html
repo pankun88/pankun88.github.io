@@ -10,15 +10,15 @@
     <link rel="manifest" href="/manifest.webmanifest" />
     <link rel="icon" href="/icon-192.png" />
     <title>세잎클로버 마을</title>
-    <script type="module" crossorigin src="/assets/village-Dd-xw-qJ.js"></script>
+    <script type="module" crossorigin src="/assets/village-D9opqAb_.js"></script>
     <link rel="modulepreload" crossorigin href="/assets/style-B0EQ9ZNn.js">
-    <link rel="modulepreload" crossorigin href="/assets/locomotion-C6yITJmv.js">
-    <link rel="modulepreload" crossorigin href="/assets/fireBreathEffect-C3SWEgxX.js">
+    <link rel="modulepreload" crossorigin href="/assets/locomotion-C21QtTsN.js">
+    <link rel="modulepreload" crossorigin href="/assets/fireBreathEffect-CRPmbxVK.js">
     <link rel="modulepreload" crossorigin href="/assets/growth-DF9vfQNn.js">
-    <link rel="modulepreload" crossorigin href="/assets/egg-BSBj3CR8.js">
-    <link rel="modulepreload" crossorigin href="/assets/fullscreen-CDMPxNqQ.js">
+    <link rel="modulepreload" crossorigin href="/assets/fullscreen-z-iVxRNC.js">
+    <link rel="modulepreload" crossorigin href="/assets/egg-9T8WJPQg.js">
     <link rel="stylesheet" crossorigin href="/assets/style-PFVffYE_.css">
-    <link rel="stylesheet" crossorigin href="/assets/village-BpwAuQUe.css">
+    <link rel="stylesheet" crossorigin href="/assets/village-b-e1LPyD.css">
   </head>
   <body>
     <main id="village" aria-label="우리 반 학생들의 알과 용이 자라는 3D 마을">
@@ -36,7 +36,9 @@
             >
             <a href="/village.html?style=sun" data-style="sun" hidden>두잎이</a>
             <a id="kiosk-link" href="/kiosk.html">선생님</a>
-            <button id="fullscreen-toggle" type="button" hidden>전체화면</button>
+            <button id="fullscreen-toggle" type="button" hidden>
+              전체화면
+            </button>
           </nav>
         </div>
         <nav
@@ -80,23 +82,19 @@
       <button id="back" type="button" hidden aria-label="마을로 돌아가기">
         <span aria-hidden="true">‹</span> 마을로
       </button>
-      <button
-        id="collection-toggle"
-        type="button"
-        hidden
-        aria-expanded="false"
-        aria-controls="collection-tray"
-      >
-        <span class="stamp-mark" aria-hidden="true"></span>
-        <span id="collection-count">도장</span>
-      </button>
-      <div id="collection-tray" hidden role="group" aria-label="도장과 꾸미기">
-        <div id="reward-collection" aria-label="모은 도장"></div>
-        <small id="decoration-label" hidden>꾸미기 고르기</small>
-        <div id="decoration-choices" role="group" aria-label="꾸미기"></div>
-        <p id="decoration-error" role="alert"></p>
-        <p id="current-decoration"></p>
-      </div>
+      <section id="weekly-reward" aria-label="우리 반 주간 열매">
+        <strong>우리 반 이번 주 열매</strong>
+        <p id="weekly-summary"></p>
+        <progress
+          id="weekly-progress"
+          aria-label="우리 반 이번 주 열매"
+          max="1"
+          value="0"
+        ></progress>
+        <p id="weekly-gift"></p>
+        <p id="weekly-celebration" role="status" aria-live="polite"></p>
+        <p id="weekly-error" role="alert"></p>
+      </section>
       <button id="preview-breath" type="button" hidden>불 뿜기 체험</button>
       <button id="choose-character" type="button" hidden>친구 고르기</button>
       <div id="fruit-control" hidden>

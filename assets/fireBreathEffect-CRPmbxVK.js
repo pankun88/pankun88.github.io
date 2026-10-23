@@ -1,4 +1,4 @@
-import{A as e,D as t,I as n,J as r,T as i,W as a,b as o,j as s,l as c,rt as l,w as u}from"./locomotion-C6yITJmv.js";var d={Flame:0,Smoke:1,Plasma:2,Spark:3,Glow:4},f=`
+import{A as e,D as t,I as n,J as r,T as i,W as a,b as o,j as s,l as c,nt as l,w as u}from"./locomotion-C21QtTsN.js";var d={Flame:0,Smoke:1,Plasma:2,Spark:3,Glow:4},f=`
   attribute vec3 iPosition;
   attribute vec3 iVelocity;
   attribute vec4 iData; // age 0..1, world size, seed, strength
